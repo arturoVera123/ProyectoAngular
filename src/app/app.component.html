@@ -1,4 +1,4 @@
-<div class="toolbar" role="banner">
+<!-- <div class="toolbar" role="banner">
   <img
     width="40"
     alt="Angular Logo"
@@ -8,7 +8,10 @@
     <div class="spacer"></div>
 </div>
 
+
 <div class="content" role="main">
+
+
   <div fxLayout="column">
     <div fxFlex="100">
       <strong>Bienvenido a tu prueba de Desarrollador Jr. de la Federación Mexicana de Fútbol.</strong>
@@ -73,5 +76,99 @@
     </div>
     
   </div>
-  
-</div>
+
+  <div>
+    <div>
+      <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+    
+        <ng-wizard-step [title]="'Step 1'" [description]="'Formulario'"
+          [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+          <h1 style="text-align: center;">Formulario</h1>
+          <form role="form">
+            <div class="form-group">
+              <label for="email">Nombre:</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="email">Apellido Paterno:</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="email">Apellido Materno:</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Fecha de Nacimiento:</label>
+              <input type="date" class="form-control" id="pwd">
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Genero:</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+               
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Nacionalidad:</label>
+              <select class="form-select" aria-label="Default select example">
+                <option ngFor= " let emp of Data|  ObjToArray" [value]="emp.id" ></option>
+               
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Club de fubol:</label>
+              <select id ="department"  name="department"
+              [(ngModel)]="department" class="form-control" >
+                <option *ngFor="let info of Data|  ObjToArray " [value]="info.id"  >
+                 
+               
+                </option>
+            
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pwd">RFC:</label>
+              <input type="text" class="form-control" id="pwd">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Ocupacion:</label>
+              <input type="text" class="form-control" id="pwd">
+            </div>
+            
+
+           
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+
+        </ng-wizard-step>
+        
+        
+        
+        <ng-wizard-step [title]="'Step 3'" [description]="'Step 3 description'"
+          [canEnter]="isValidFunctionReturnsObservable.bind(this)" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+          <span>Paso 2 </span>
+        </ng-wizard-step>
+       
+      <ng-wizard-step [title]="'Step 4'" [description]="'Step 4 description'">
+          <span>Paso 3 </span>
+         
+        </ng-wizard-step>
+       
+        
+      
+        
+      </ng-wizard>
+    
+    </div>
+
+  </div>
+
+  {{ objetoDatos|json}}
+</div> -->
+
+
+
+<router-outlet></router-outlet>

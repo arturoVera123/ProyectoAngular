@@ -1,0 +1,187 @@
+
+    <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+        <ng-wizard-step [title]="'Step 1'" [description]="'Step 1'" [canEnter]="isValidTypeBoolean"
+            [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+            <div id="body">
+
+
+            
+            <h1 style="text-align: center;">Formulario</h1>
+            <form [formGroup]="inicio" (ngSubmit)="enviar(inicio.value)">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="email">Nombre:</label>
+                                <input type="email" formControlName="Nombre" class="form-control" id="email">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="email">Apellido Paterno:</label>
+                                <input type="email" formControlName="ApellidoP" class="form-control" id="email">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+
+                            <div class="form-group">
+                                <label for="email">Apellido Materno:</label>
+                                <input type="email" formControlName="ApellidoM" class="form-control" id="email">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="pwd">Fecha de Nacimiento:</label>
+                                <input type="date" formControlName="FechaN" class="form-control" id="pwd" width="50%">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+
+                            <div class="form-group">
+                                <label for="pwd">Genero:</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Selecciona un Genero</option>
+                                    <option value="{{item.id}}" *ngFor="let item of Data">{{item.nombre}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="pwd">Nacionalidad:</label>
+                                <select class="form-select" id="department" name="department">
+                                    <option *ngFor="let data of DataNacion " value="{{data.id}}">
+
+
+                                        <span> {{data.nombre}} <img src="{{data.logo}}" alt="..." class="img-thumbnail">
+                                        </span>
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+
+
+                            <div class="form-group">
+                                <label for="pwd">Club de futbol:</label>
+                                <select class="form-select" id="department" name="department">
+                                    <option *ngFor="let data of Dataequipos " value="{{data.id}}"
+                                        style="background-image:url(data.logo);">
+
+                                        <span> {{data.nombre}} </span>
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="pwd">RFC:</label>
+                                <input type="text" formControlName="RFC" class="form-control" id="pwd">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="pwd">Ocupacion:</label>
+                                <input formControlName="Ocupacion" type="text" class="form-control" id="pwd">
+                            </div>
+            
+            
+
+                         
+                        </div>
+                    
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+              
+
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+
+
+        </ng-wizard-step>
+
+
+
+        <ng-wizard-step [title]="'Step 3'" [description]="'Step 3 description'"
+            [canEnter]="isValidFunctionReturnsObservable.bind(this)"
+            [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+            <span>Paso 2 </span>
+        </ng-wizard-step>
+
+        <ng-wizard-step [title]="'Step 4'" [description]="'Step 4 description'">
+            <span>Paso 3 </span>
+
+        </ng-wizard-step>
+
+
+
+
+    </ng-wizard>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top"
+                    src="https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/7/7.png"
+                    alt="Card image cap">
+                <div class="card-body">
+                    Nombre:<p class="card-text">{{nom}}</p>
+                    Ocupacion:<p class="card-text">{{ocup}}</p>
+                    RFC:<p class="card-text">{{rfc}}</p>
+                    Fecha de Nacimiento:<p class="card-text">{{fdnc}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <button type="button" class="form-control" (click)="generatedoc()">Generar PDF</button>
+        </div>
+
+    </div>
+</div>
